@@ -1,0 +1,50 @@
+﻿@model Examify.Models.ExamModel
+@{
+    ViewData["Title"] = "_ExamForm";
+}
+
+    <form asp-action="_ExamForm" id="examForm" style="padding:20px; width: 100%;">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="title" class="control-label"></label>
+            <input asp-for="title" name="title" id="e_title" class="form-control" required/>
+            <span asp-validation-for="title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="type" class="control-label"></label>
+            <select asp-for="type" name="type" id="e_type" class="form-control" required>
+                <option value="" disabled selected hidden>-- Select --</option>
+                <option value="Schriftliche Prüfung">Schriftliche Prüfung</option>
+                <option value="Mündliche Prüfung">Mündliche Prüfung</option>
+                <option value="Computer Prüfung">Computer Prüfung</option>
+                <option value="Moodle Prüfung">Moodle Prüfung</option>
+                <option value="Programm Abgabe">Programm Abgabe</option>
+                <option value="Präsentation">Präsentation</option>
+            </select>
+            <span asp-validation-for="type" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="subject" class="control-label"></label>
+            <select asp-for="subject" id="e_subject" name="subject" class="form-control" required>
+                <option value="" disabled selected hidden>-- Select --</option>
+                <option value="POS (C#)">POS (C#)</option>
+                <option value="POS (Java)">POS (Java)</option>
+                <option value="NVS">NVS</option>
+                <option value="DBI (RE)">DBI (RE)</option>
+                <option value="DBI (BA)">DBI (BA)</option>
+                <option value="AM">AM</option>
+                <option value="WIR">WIR</option>
+                <option value="PRE">PRE</option>
+                <option value="BWM">BWM</option>
+                <option value="DE">DE</option>
+                <option value="EN">EN</option>
+            </select>
+            <span asp-validation-for="subject" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="date" class="control-label"></label>
+            <input asp-for="date" name="date" id="e_date" class="form-control" required/>
+            <span asp-validation-for="date" class="text-danger"></span>
+        </div>
+    </form>
+

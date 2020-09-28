@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
+		<class>entities.UExaminationEntity</class>
+		<class>entities.UPatientsEntity</class>
+		<class>entities.UStaffEntity</class>
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
+ 			<property name="javax.persistence.jdbc.url" value="jdbc:sqlite:hospital.db"/>
+<!-- Oracle Database:
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+			<property name="javax.persistence.jdbc.user" value="system"/>
+			<property name="javax.persistence.jdbc.password" value="oracle"/>
+ -->
+			<property name="eclipselink.logging.level" value="FINE"/>
+<!--			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/> -->
+			<property name="eclipselink.ddl-generation" value="create-tables"/>
+			<property name="eclipselink.target-database" value="Database"/>
+			<property name="toplink.jdbc.url"
+					  value="jdbc:sqlite:/home/andiroid/Dropbox/CURRENT/JAVA/HospitalAppJPA/hospital.db"/>
+			<property name="toplink.jdbc.driver" value="org.sqlite.JDBC"/>
+			<property name="hibernate.connection.url"
+					  value="jdbc:sqlite:/home/andiroid/Dropbox/CURRENT/JAVA/HospitalAppJPA/hospital.db"/>
+			<property name="hibernate.connection.driver_class" value="org.sqlite.JDBC"/>
+			<property name="openjpa.ConnectionURL"
+					  value="jdbc:sqlite:/home/andiroid/Dropbox/CURRENT/JAVA/HospitalAppJPA/hospital.db"/>
+			<property name="openjpa.ConnectionDriverName" value="org.sqlite.JDBC"/>
+			<property name="eclipselink.jdbc.url"
+					  value="jdbc:sqlite:/home/andiroid/Dropbox/CURRENT/JAVA/HospitalAppJPA/hospital.db"/>
+			<property name="eclipselink.jdbc.driver" value="org.sqlite.JDBC"/>
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,64 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Sun Mar 29 14:33:55 2020
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   /ORCL/src/apps_leitzmueller.ldr
+Data File:      /ORCL/data/MOCK_DATA_APPS_20200206.csv
+  Bad File:     /ORCL/log/MOCK_DATA_APPS_20200206.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table LEITZMUELLER.APPS_TMP, loaded from every logical record.
+Insert option in effect for this table: REPLACE
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+PURCHASE_DATE                       FIRST     *   ,  O(") DATE MM/DD/YYYY      
+PURCHASE_HOUR                        NEXT     *   ,  O(") CHARACTER            
+REGION_ID                            NEXT     *   ,  O(") CHARACTER            
+TYPE_ID                              NEXT     *   ,  O(") CHARACTER            
+APP_ID                               NEXT     *   ,  O(") CHARACTER            
+PREMIUM_APP                          NEXT     *   ,  O(") CHARACTER            
+BASIC_APP                            NEXT     *   ,  O(") CHARACTER            
+CANCELED_PURCHASES                   NEXT     *   ,  O(") CHARACTER            
+REVENUE                              NEXT     *   ,  O(") CHARACTER            
+
+Record 1: Rejected - Error on table LEITZMUELLER.APPS_TMP, column PURCHASE_DATE.
+ORA-01858: a non-numeric character was found where a numeric was expected
+
+Record 1002: Rejected - Error on table LEITZMUELLER.APPS_TMP, column PURCHASE_DATE.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 1003: Rejected - Error on table LEITZMUELLER.APPS_TMP, column PURCHASE_HOUR.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+Record 1004: Rejected - Error on table LEITZMUELLER.APPS_TMP, column PURCHASE_HOUR.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+
+Table LEITZMUELLER.APPS_TMP:
+  1000 Rows successfully loaded.
+  4 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 148608 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:          1004
+Total logical records rejected:         4
+Total logical records discarded:        0
+
+Run began on Sun Mar 29 14:33:55 2020
+Run ended on Sun Mar 29 14:33:55 2020
+
+Elapsed time was:     00:00:00.06
+CPU time was:         00:00:00.01

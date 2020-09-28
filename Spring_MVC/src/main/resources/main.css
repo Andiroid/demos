@@ -1,0 +1,25 @@
+h1 {
+    color: blue;
+}
+table {
+    border-collapse: collapse;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even){background-color: #f2f2f2}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.link {
+    margin: 0;
+    border: 0;
+    background: none;
+    overflow: visible;
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}

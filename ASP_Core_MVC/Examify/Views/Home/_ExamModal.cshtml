@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "_ExamModal";
+}
+
+
+<p class="btn btn-default" id="btn-create" onclick="clearForm()" data-toggle="modal" data-target="#examModal" style="color:#0366d6; cursor:pointer;">Create New</p>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="examModal">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div id="examModalFrame" class="modal-header">
+                <partial name="_ExamForm" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="modal-btn-yes" onclick="saveExam()">Save</button>
+                <button type="button" class="btn btn-primary" id="modal-btn-no" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

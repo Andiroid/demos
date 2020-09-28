@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# FILES=/ORCL/data/*
+for f in /ORCL/data/*
+do
+	export FILENAME=`basename $f`
+	export FILEBASE=`echo $FILENAME | sed -e 's/\..*//'`
+
+	# basename /path/to/dir/filename.txt .txt
+	# echo $FILENAME
+	# echo $FILEBASE
+    sqlldr leitzmueller/oracle data=/ORCL/data/$FILENAME control=/ORCL/test_src/apps_leitzmueller.ldr log=/ORCL/log/$FILEBASE_$(date +"%m_%d_%Y").log bad=/ORCL/log/$FILEBASE_$(date +"%m_%d_%Y").bad errors=20
+
+done

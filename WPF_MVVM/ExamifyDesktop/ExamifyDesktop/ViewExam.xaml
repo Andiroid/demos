@@ -1,0 +1,84 @@
+﻿<Window x:Class="ExamifyDesktop.ViewExam"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamifyDesktop"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="ViewExam" Height="450" Width="400">
+
+    <Border Background="White" 
+        BorderBrush="White" 
+        BorderThickness="0" 
+        CornerRadius="45" 
+        Padding="25">
+        <StackPanel>
+
+            <TextBlock Text="EXAM EDITOR" FontSize="25" HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Titel:" Margin="0,10,0,0"/>
+            <TextBox FontWeight="Bold" Text="{Binding Path=e_title}"/>
+            
+            <!--
+            <TextBlock Text="Fach:" Width="100" HorizontalAlignment="Left"/>
+            <TextBlock Width="100" TextAlignment="Left" FontWeight="Bold" Text="{Binding e_subject}" Margin="122,0"/>
+            -->
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Fach: " VerticalAlignment="Top"/>
+                <TextBlock FontWeight="Bold" Text="{Binding e_subject}" Grid.Column="1"/>
+            </Grid>
+            <ComboBox x:Name="comboBoxFach"  SelectedValue="{Binding Path=e_subject}" SelectedValuePath="Content">
+                <ComboBoxItem Name="cb1" Content="POS (C#)"/>
+                <ComboBoxItem Content="POS (JAVA)"/>
+                <ComboBoxItem Content="NVS"/>
+                <ComboBoxItem Content="DBI (DATA)"/>
+                <ComboBoxItem Content="DBI (NOSQL)"/>
+                <ComboBoxItem Content="DBI (PLSQL)"/>
+                <ComboBoxItem Content="AM"/>
+                <ComboBoxItem Content="DE"/>
+                <ComboBoxItem Content="EN"/>
+                <ComboBoxItem Content="WIR"/>
+                <ComboBoxItem Content="BWM"/>
+                <ComboBoxItem Content="PRE"/>
+            </ComboBox>
+            <!--
+            <TextBlock Text="Typ:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Path=e_type}"/>
+            -->
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Typ: " VerticalAlignment="Top"/>
+                <TextBlock FontWeight="Bold" Text="{Binding e_type}" Grid.Column="1"/>
+            </Grid>
+            <ComboBox x:Name="comboBoxTyp"  SelectedValue="{Binding Path=e_type}" SelectedValuePath="Content">
+                <ComboBoxItem Content="Schriftlich"/>
+                <ComboBoxItem Content="Praktisch"/>
+                <ComboBoxItem Content="Mündlich"/>
+                <ComboBoxItem Content="Moodle"/>
+                <ComboBoxItem Content="Programm Abgabe"/>
+            </ComboBox>
+
+            <TextBlock Text="Datum:" Margin="0,10,0,0"/>
+            <DatePicker FontWeight="Bold" SelectedDate="{Binding Path=e_date}"/>
+            <!--
+            <DatePicker SelectedDate="{Binding Path=e_date, Mode=TwoWay, TargetNullValue={x:Static System:DateTime.Now}}"/>
+            <TextBlock Text="{Binding Path=e_date, TargetNullValue={x:Static System:DateTime.Now}}"/>
+            -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="Save" IsDefault="True"  Content="Speichern"  Margin="4" Click="Save_Click"/>
+                <Button x:Name="Cancel" IsCancel="True"  Margin="4" Content="Abbruch"/>
+            </StackPanel>
+            
+           
+        </StackPanel>
+    </Border>
+</Window>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamifyDesktopDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="s_student">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="s_first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="s_last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="s_student1" Relationship="Self.FK_s_student_s_student" FromRole="s_student" ToRole="s_student1" />
+    <NavigationProperty Name="s_student2" Relationship="Self.FK_s_student_s_student" FromRole="s_student1" ToRole="s_student" />
+    <NavigationProperty Name="e_exam" Relationship="ExamifyDesktopDBModel.FK_e_exam_s_student" FromRole="s_student" ToRole="e_exam" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_s_student_s_student">
+    <End Role="s_student" Type="Self.s_student" Multiplicity="1" />
+    <End Role="s_student1" Type="Self.s_student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="s_student">
+        <PropertyRef Name="s_id" />
+      </Principal>
+      <Dependent Role="s_student1">
+        <PropertyRef Name="s_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExamifyDesktopDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="s_student" EntityType="Self.s_student" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_s_student_s_student" Association="Self.FK_s_student_s_student">
+      <End Role="s_student" EntitySet="s_student" />
+      <End Role="s_student1" EntitySet="s_student" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ExamifyDesktopDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ExamifyDesktopDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="e_exam" EntityType="ExamifyDesktopDBModel.e_exam" />
+    <AssociationSet Name="FK_e_exam_s_student" Association="ExamifyDesktopDBModel.FK_e_exam_s_student">
+      <End Role="s_student" EntitySet="s_student" />
+      <End Role="e_exam" EntitySet="e_exam" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="e_exam">
+    <Key>
+      <PropertyRef Name="e_id" />
+    </Key>
+    <Property Name="e_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="e_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="e_complete" Type="Byte" />
+    <Property Name="e_subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="e_s_id" Type="Int32" />
+    <NavigationProperty Name="s_student" Relationship="ExamifyDesktopDBModel.FK_e_exam_s_student" FromRole="e_exam" ToRole="s_student" />
+    <Property Name="e_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="e_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_e_exam_s_student">
+    <End Type="ExamifyDesktopDBModel.s_student" Role="s_student" Multiplicity="0..1" />
+    <End Type="ExamifyDesktopDBModel.e_exam" Role="e_exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="s_student">
+        <PropertyRef Name="s_id" />
+      </Principal>
+      <Dependent Role="e_exam">
+        <PropertyRef Name="e_s_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

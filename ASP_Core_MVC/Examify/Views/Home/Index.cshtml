@@ -1,0 +1,66 @@
+﻿@model Examify.Models.ExamModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+
+
+<br />
+<br />
+<div class="bgimg-2" style="background-image: url('../img/code1.jpg');">
+    <div class="caption">
+        <span class="border">Welcome</span>
+    </div>
+</div>
+
+<div style="color: #777; background-color: white; text-align: center; padding: 50px 80px; text-align: justify;" class="pText">
+    <h3 style="text-align:center;">Lorem ipsum dolor</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+<div class="bgimg-2" style="background-image: url('../img/code2.jpg');">
+    <div class="caption">
+        <span class="border" style="background-color:transparent;color: #f7f7f7;">SOFTWARE</span>
+    </div>
+</div>
+
+<div style="position:relative;">
+    <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;" class="pText">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+</div>
+
+<div class="bgimg-3" style="background-image: url('../img/electronics1.jpg');">
+    <div class="caption">
+        <span class="border" style="background-color:transparent;color: #f7f7f7;">ELECTRONICS</span>
+    </div>
+</div>
+
+<div style="position:relative;">
+    <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;" class="pText">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+</div>
+
+
+<div class="bgimg-2" style="background-image: url('../img/server.jpg');">
+    <div class="caption">
+        <span class="border">NETWORKING</span>
+    </div>
+</div>
+
+<div style="color: #777; background-color: white; text-align: center; padding: 50px 80px; text-align: justify;" class="pText">
+    <h3 style="text-align:center;">Lorem ipsum dolor</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+<div class="bgimg-2">
+    <div class="caption" style="cursor:pointer;" onclick="scrollUp()">
+        <span class="border">Scroll UP ↑</span>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

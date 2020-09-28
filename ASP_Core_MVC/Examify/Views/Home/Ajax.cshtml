@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "AjaxDemo";
+}
+
+<h2>ListExams </h2>
+
+<input type="text" id="search" class="search" name="search" placeholder="Search.." onkeyup="refreshExamTable(this.value)">
+<partial name="_ExamModal" />
+
+<div id="errorDisplay"></div>
+
+<partial name="_DisplayTableAjax" />
+
+@section scripts{
+    <script src="~/js/examify.js"></script>
+}

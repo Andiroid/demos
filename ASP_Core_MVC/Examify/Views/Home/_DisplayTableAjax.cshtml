@@ -1,0 +1,71 @@
+﻿@using System.Data
+@using Microsoft.Data.SqlClient
+@using Microsoft.Extensions.Configuration
+
+@model IEnumerable<Examify.Models.ExamModel>
+@{
+    ViewData["Title"] = "_DisplayTableAjax";
+}
+
+<div id="tableWrap">
+    <table id="examTable" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th style="text-align:center;">
+                    Complete
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (DataRow dataRow in ExamModel.fetchAllExams().Rows)
+                {
+                    <tr id="@dataRow["e_id"]">
+                        <td>
+                            @dataRow["e_title"]
+                        </td>
+                        <td>
+                            @dataRow["e_type"]
+                        </td>
+                        <td>
+                            @dataRow["e_subject"]
+                        </td>
+                        <td>
+                            @{ var dt = Convert.ToDateTime(dataRow["e_date"]).ToShortDateString();}  @dt
+                        </td>
+                        <td style="text-align:center;">
+
+                            @{ var status = dataRow["e_complete"].ToString() == "1" ? "checked" : "";}
+                            <input type="checkbox" @status value="" onclick="completeExam(this)" data-id="@dataRow["e_id"]" name="checkboxG1" id='cb_@dataRow["e_id"]' class="css-checkbox" /><label for='cb_@dataRow["e_id"]' class="css-label"></label>
+                            <!--<label class="checkbox-inline"><input type="checkbox" data-id="@dataRow["e_id"]" value="" @status onclick="completeExam(this)"></label>-->
+                        </td>
+                        <td>
+                            <span alt="Edit" title="Edit" style="cursor:pointer;" onclick="updateExam('@dataRow["e_id"]','@dataRow["e_title"]','@dataRow["e_type"]','@dataRow["e_subject"]','@dt')"><img src="~/img/pencil.png" alt="Alternate Text" style="width:25px; height:25px;" /></span>
+                            <span style="position:relative;">
+                                <span alt="Delete" title="Delete" name="examID" onclick="deleteExam(@dataRow["e_id"])" style=" top:5px; left:20px; position:relative; color:red; font-weight:900; font-size:30px;line-height:15px; padding-top:10px; cursor:pointer;">&times;</span>
+                            </span>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+    td {
+        padding-top: 20px !important;
+    }
+</style>

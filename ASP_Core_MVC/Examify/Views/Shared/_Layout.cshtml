@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Examify</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <div id="navWrap">
+            <div class="topnav" id="nav">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="text-transform: uppercase;font-size:25px;color:#3b3b3b;">Examify</a>
+                <a class="nav-link text-dark" id="Home" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-link text-dark" id="ListExams" asp-area="" asp-controller="Home" asp-action="ListExams">ListExams</a>
+                <a class="nav-link text-dark" id="AddExam" asp-area="" asp-controller="Home" asp-action="AddExam">AddExam</a>
+                <a class="nav-link text-dark" id="AjaxDemo" asp-area="" asp-controller="Home" asp-action="Ajax">AjaxDemo</a>
+                <a href="javascript:void(0);" class="icon" onclick="nav()">&#9776;</a>
+            </div>
+        </div>
+
+        <article class="page-body" style="padding: 20px;">
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </article>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2020 - Examify - <a asp-area="" asp-controller="Home" asp-action="Index">Index</a>
+            </div>
+        </footer>
+    </div>
+
+    <style>
+        #@ViewData["Title"] {
+            color: red !important;
+            text-shadow: 2px 2px 8px #333;
+        }
+        .wrapper {
+            min-height: 100%;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+    </style>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ $# -lt 3 ]
+then
+    echo "usage: apps_leitzmueller [in-schema] [password] [for-schema]"
+else
+    # create procedure
+    sqlplus $1/$2 @apps_leitzmueller.plsql $3
+    msg="USER $1 CREATED PROCEDURE for SCHEMA $3"
+
+    # call procedure
+    msg2="USER $1 CREATED TABLE APPS"
+    sqlplus $1/$2 @apps_leitzmueller.sql
+
+    # # load data
+    # sqlldr $1/$2 data=/ORCL/data/MOCK_DATA_APPS.csv control=/ORCL/src/apps_leitzmueller.ldr log=/ORCL/log/apps_$(date +"%m_%d_%Y").log bad=/ORCL/log/apps_$(date +"%m_%d_%Y").bad errors=20
+
+    printf '%s %s\n%s\n\n' "$(date)" "$msg" "$msg2" >> dwh.log;
+
+fi

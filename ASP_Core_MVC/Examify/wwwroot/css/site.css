@@ -1,0 +1,370 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    /*font: 400 15px/1.8 "Lato", sans-serif;*/
+    font-family: "Lato", sans-serif;
+    color: #777;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.container {
+    padding: 0 !important;
+}
+
+:invalid {
+    box-shadow: none;
+}
+
+:-moz-submit-invalid {
+    box-shadow: none;
+}
+
+:-moz-ui-invalid {
+    box-shadow: none;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+.text-dark {
+    color: dimgray !important;
+}
+
+a.text-dark:focus, a.text-dark:hover {
+    color: #121416 !important;
+}
+
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+input[type=checkbox].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left: 30px;
+    height: 25px;
+    display: inline-block;
+    line-height: 25px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 25px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -25px;
+}
+
+label.css-label {
+    background-image: url(../img/cb.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* ============================================================
+	NAV START
+============================================================ */
+
+#navWrap {
+    -moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    margin-bottom:20px;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #fff;
+}
+@media screen and (min-width: 600px) {
+    .topnav {
+        margin-left: 12%;
+    }
+}
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 36px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    color: black;
+    text-shadow: 2px 2px 8px #333;
+}
+
+.active {
+    background-color: #3f3f3f;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+    font-size: 20px;
+    margin-top: 13px;
+    line-height: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+    .pText {
+        padding:30px 30px !important;
+    }
+    .topnav a:not(:first-child) {
+        display: none;
+    }
+
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+    .topnav {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    .topnav.responsive {
+        position: relative;
+    }
+
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+.topnav > a {
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    display: inline-block;
+    padding: 15px 20px;
+    position: relative;
+}
+
+@media screen and (min-width: 1000px) {
+    .topnav > a {
+        line-height:50px;
+    }
+}
+
+.topnav > a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #000;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.topnav > a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+/* ============================================================
+	NAV END
+============================================================ */
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+    position: relative;
+    opacity: 0.65;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bgimg-1 {
+    min-height: 100%;
+}
+
+.bgimg-2 {
+    min-height: 400px;
+}
+
+.bgimg-3 {
+    min-height: 400px;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+
+.caption span.border {
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .caption span.border {
+        font-size: 15px;
+        letter-spacing: 10px;
+    }
+}
+
+h3 {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font: 20px "Lato", sans-serif;
+    color: #111;
+}
+
+@media only screen and (max-device-width: 1000px) {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+    }
+}
+
+table {
+    table-layout: fixed !important;
+}
+
+@media screen and (max-width: 1000px) {
+
+    #tableWrap {
+        overflow-x: auto;
+        width: 100%;
+        margin-top: 15px;
+        white-space: nowrap;
+    }
+
+    table {
+        table-layout: unset !important;
+    }
+
+    .container {
+        position: absolute;
+        width: 92%;
+        padding: 0px;
+        margin: 0px;
+        max-width: 100% !important;
+        
+    }
+
+    .footer {
+        position:fixed;
+        bottom:0;
+    }
+}
+
+.search {
+    float:right;
+    width: 130px;
+    max-width:300px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+
+@media screen and (min-width: 1000px) {
+    .search:focus {
+        width: 100%;
+    }
+}

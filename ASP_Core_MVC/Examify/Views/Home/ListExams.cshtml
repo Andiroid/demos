@@ -1,0 +1,67 @@
+﻿@using System.Data
+@using Microsoft.Data.SqlClient
+@using Microsoft.Extensions.Configuration
+
+@model IEnumerable<Examify.Models.ExamModel>
+
+@{
+    ViewData["Title"] = "ListExams";
+}
+
+<h2>ListExams </h2>
+
+<p>
+    <a asp-action="AddExam">Create New</a>
+</p>
+
+<div id="tableWrap">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (DataRow dataRow in ExamModel.fetchAllExams().Rows)
+                {
+                    <tr>
+                        <td>
+                            @dataRow["e_title"]
+                        </td>
+                        <td>
+                            @dataRow["e_type"]
+                        </td>
+                        <td>
+                            @dataRow["e_subject"]
+                        </td>
+                        <td>
+                            @{DateTime dt = Convert.ToDateTime(dataRow["e_date"]);}
+                            @dt.ToShortDateString()
+                        </td>
+                        <td>
+                            <form asp-action="DeleteExam">
+                                <button name="examID" value="@dataRow["e_id"]">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
